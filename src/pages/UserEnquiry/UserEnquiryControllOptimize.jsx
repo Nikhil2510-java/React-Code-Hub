@@ -1,19 +1,23 @@
 import { useState } from "react";
+import axios from "axios";
 
 const UserEnquiryControllOptimize = () => {
 
-  const [enquiryFieldData, setEnquiryFieldData] = useState({
+  const intialEnquiryFieldData = {
     name: "",
     mobNo: "",
     massage: "",
-    enquiryDept: "",
+    enquiryDept: "TECH",
     otherEnquiryDept: ""
-  });
+  }
+
+  const [enquiryFieldData, setEnquiryFieldData] = useState(intialEnquiryFieldData);
 
   const [fieldError, setFieldError] = useState({
     nameError: false,
     mobNoError: false,
     massageError: false,
+    otherDeptError: false,
   });
 
   const onInputChange = (e) => {
@@ -53,8 +57,61 @@ const UserEnquiryControllOptimize = () => {
     setEnquiryFieldData({ ...enquiryFieldData, otherEnquiryDept: e.target.value });
   };
 
-  const onFormSubmit = (e) => {
+  const onFormSubmit = async (e) => {
     e.preventDefault();
+    //Fetch API 
+    //Approche:1
+    // fetch("https://jsonplaceholder.typicode.com/posts" ,{
+    //   method: "POST",
+    //   body: JSON.stringify(enquiryFieldData),
+    //   headers: {
+    //     "CLIENT_ID": "BT2025"
+    //   }
+    // })
+    // .then((response) => response.json())
+    // .then((data) => {
+    //   console.log("Data submitted successfully:", data)
+    //   alert("Data submitted successfully");
+    //   setEnquiryFieldData(intialEnquiryFieldData);
+    // })
+    // .catch((error) => {console.error("Error:", error)});
+
+    //Approche:2
+    // axios.post("https://jsonplaceholder.typicode.com/posts", enquiryFieldData, {
+    //   headers: { "CLIENT_ID": "BT2025" }
+    // }).then ((response) => {
+    //   console.log("Data submitted successfully:", response.data);
+    //   alert("Data submitted successfully");
+    //   setEnquiryFieldData(intialEnquiryFieldData);
+    // }).catch((error) => {
+    //   console.error("Error:", error);
+    // });  
+
+    //Approche:3
+    const isNameValid = validateField("name", enquiryFieldData.name);
+    const isMobValid = validateField("mobNo", enquiryFieldData.mobNo);
+    const isMessageValid = validateField("massage", enquiryFieldData.massage);
+
+    const isOtherDeptValid =
+      enquiryFieldData.enquiryDept !== "OTHERS" ||
+      enquiryFieldData.otherEnquiryDept.trim() !== "";
+
+    if (!isNameValid || !isMobValid || !isMessageValid || !isOtherDeptValid) {
+      alert("Please fill all fields correctly.");
+      return;
+    }
+
+    try {
+      const res = await axios.post("https://jsonplaceholder.typicode.com/posts", enquiryFieldData, {
+        headers: { "CLIENT_ID": "BT2025" }
+      })
+      console.log("Data submitted successfully:", res.data);
+      alert("Data submitted successfully");
+      setEnquiryFieldData(intialEnquiryFieldData);
+    }
+    catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
@@ -121,6 +178,9 @@ const UserEnquiryControllOptimize = () => {
               value={enquiryFieldData.otherEnquiryDept}
               onChange={onOtherEnquiryDeptChange}
             />
+            {fieldError.otherDeptError && (
+              <span style={{ color: "red" }}>Please enter department name</span>
+            )}
           </div>
         )}
         <input type="submit" />
