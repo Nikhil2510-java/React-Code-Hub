@@ -36,14 +36,26 @@ const Home2 = () => {
             <div
                 style={{
                     display: viewType === "grid" ? 'flex' : '',
-                    justifyContent: 'space-around',
-                }}>
+                    flexWrap: viewType === "grid" ? 'wrap' : '',
+                    justifyContent: viewType === "grid" ? 'flex-start' : 'space-around',
+                    gap: viewType === "grid" ? '20px' : '',
+                }}
+            >
                 {
-                    productData.map((product ,index) => (
-                        <Products key={`${product.title}_${index}`}
-                            {...product}
-                            viewType={viewType}
-                        />
+                    productData.map((product, index) => (
+                        <div
+                            key={`${product.title}_${index}`}
+                            style={
+                                viewType === "grid"
+                                    ? { flex: '0 0 23%', boxSizing: 'border-box' }
+                                    : { width: '100%' }
+                            }
+                        >
+                            <Products
+                                {...product}
+                                viewType={viewType}
+                            />
+                        </div>
                     ))
                 }
             </div>
