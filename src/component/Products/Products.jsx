@@ -16,7 +16,7 @@ const Products = (props) => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    height: '100%',
+                    height: '500px',
                     maxWidth: '300px',
                     backgroundColor: '#1e1e1e',
                     color: 'white'
@@ -24,8 +24,8 @@ const Products = (props) => {
             >
                 <img
                     style={{
-                        width: '100%',
-                        height: 'auto',
+                        width: '200px',
+                        height: '180px',
                         objectFit: 'contain'
                     }}
                     src={props.image}
@@ -81,14 +81,14 @@ const Products = (props) => {
                     border: '1px solid #ccc',
                     backgroundColor: '#1e1e1e',
                     color: 'white',
-                    height: '250px', 
+                    height: '250px',
                     maxWidth: '100%',
                 }}
             >
                 <img
                     style={{
-                        width: 'auto',
-                        height: '100%',
+                        width: '200px',
+                        height: '250px',
                         objectFit: 'contain',
                         borderRight: '1px solid #ccc'
                     }}
@@ -108,12 +108,14 @@ const Products = (props) => {
                     <div>
                         <h3 style={{ fontSize: '16px' }}>{props.title}</h3>
                         <p style={{ fontSize: '14px' }}>
-                            {showMore ? props.description : props.description.slice(0, 100)}
-                            {props.description.length > 100 && !showMore && '...'}
+                            {showMore
+                                ? props.description || ''
+                                : (props.description || '').slice(0, 100)}
+                            {(props.description && props.description.length > 100 && !showMore) && '...'}
                         </p>
                     </div>
 
-                    {props.description.length > 100 && (
+                    {props.description && props.description.length > 100 && (
                         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                             <button
                                 onClick={toggleShowMore}
