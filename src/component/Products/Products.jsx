@@ -24,7 +24,7 @@ const Products = (props) => {
             >
                 <img
                     style={{
-                        width: '200px',
+                        width: 'auto',
                         height: '180px',
                         objectFit: 'contain'
                     }}
