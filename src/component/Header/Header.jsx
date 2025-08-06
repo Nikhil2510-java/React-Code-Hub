@@ -17,7 +17,7 @@ const Header = () => {
                     <Link to={"/"}>Home</Link>
                 </li>
                 <li>
-                    <Link to={"/home2"}>Grid-List-Product</Link>
+                    <Link to={"/products"}>Grid-List-Product</Link>
                 </li>
                 <li>
                     <Link to={"/portfolio"}>Portfolio</Link>
@@ -26,10 +26,10 @@ const Header = () => {
                     <Link to={"/userEnquiry"}>User Enquiry</Link>
                 </li>
                 <li>
-                    <Link to={"/home3"}>User Table</Link>
+                    <Link to={"/userData"}>User Table</Link>
                 </li>
                 <li>
-                    <Link to={"/home3/form"}>country form</Link>
+                    <Link to={"/userData/form"}>country form</Link>
                 </li>
             </ul>
         </div>

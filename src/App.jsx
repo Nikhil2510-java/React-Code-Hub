@@ -13,36 +13,50 @@ import UserEnquiryControllOptimize from './pages/UserEnquiry/UserEnquiryControll
 import Home3 from './pages/Home/Home-3'
 import FormValidation from './component/Task-2/Form-Validation'
 import Layout from './component/Layout/Layout'
+import ProductsList from './component/ProductList/ProductList'
+
+export const routes = [
+  {
+    path: '/',
+    element: <Home />,
+    name: 'Home',
+  },
+  {
+    path: '/products',
+    element: <Home2 />,
+    name: 'Products',
+  },
+  {
+    path: '/products/:productId',
+    element: <ProductsList />,
+    name: 'Product Details',
+  },
+  {
+    path: '/portfolio',
+    element: <Portfolio />,
+    name: 'Portfolio',
+  },
+  {
+    path: '/userEnquiry',
+    element: <UserEnquiryControllOptimize />,
+    name: 'User Enquiry',
+  },
+  {
+    path: '/userData',
+    element: <Home3 />,
+    name: 'UserData',
+  },
+  {
+    path: '/userData/form',
+    element: <FormValidation />,
+    name: 'Form Validation'
+  }
+]
 
 const router = createBrowserRouter([
   {
     element: <Layout />,
-    children: [
-      {
-        path: '/',
-        element: <Home />,
-      },
-      {
-        path: '/home2',
-        element: <Home2 />,
-      },
-      {
-        path: '/portfolio',
-        element: <Portfolio />,
-      },
-      {
-        path: '/userEnquiry',
-        element: <UserEnquiryControllOptimize />,
-      },
-      {
-        path: '/home3',
-        element: <Home3 />,
-      },
-      {
-        path: '/home3/form',
-        element: <FormValidation />
-      }
-    ]
+    children: routes,
   }
 ]);
 

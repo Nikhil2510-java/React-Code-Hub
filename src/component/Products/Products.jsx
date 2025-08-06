@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Products = (props) => {
 
@@ -42,7 +43,9 @@ const Products = (props) => {
                     }}
                 >
                     <div>
-                        <h3 style={{ fontSize: '16px' }}>{props.title}</h3>
+                        <Link to={`/products/${props.id}`}>
+                            <h3 style={{ fontSize: '16px' }}>{props.title}</h3>
+                        </Link>
                         <p style={{ fontSize: '14px' }}>
                             {showMore ? props.description : props.description.slice(0, 100)}
                             {props.description.length > 100 && !showMore && '...'}
@@ -106,7 +109,9 @@ const Products = (props) => {
                     }}
                 >
                     <div>
-                        <h3 style={{ fontSize: '16px' }}>{props.title}</h3>
+                        <Link to={`/products/${props.id}`}>
+                            <h3 style={{ fontSize: '16px' }}>{props.title}</h3>
+                        </Link>
                         <p style={{ fontSize: '14px' }}>
                             {showMore
                                 ? props.description || ''
