@@ -6,7 +6,7 @@ const Footer = () => {
             color: "#fff",
             padding: "20px 0",
             textAlign: "center",
-            position: "fixed",
+            position: "relative",
             left: 0,
             bottom: 0,
             width: "100%"
@@ -24,7 +24,7 @@ const Footer = () => {
                         padding: "0 10px",
                         color: "#fff",
                     }}
-                    to={"/home2"}>Grid-List-Product</Link>
+                    to={"/products"}>Grid-List-Product</Link>
                 <Link
                     style={{
                         padding: "0 10px",
@@ -42,13 +42,13 @@ const Footer = () => {
                         padding: "0 10px",
                         color: "#fff",
                     }}
-                    to={"/home3"}>User Table</Link>
+                    to={"/userData"}>User Table</Link>
                 <Link
                     style={{
                         padding: "0 10px",
                         color: "#fff",
                     }}
-                    to={"/home3/form"}>Country Form</Link>
+                    to={"/userData/form"}>Country Form</Link>
             </div>
         </div>
     )
