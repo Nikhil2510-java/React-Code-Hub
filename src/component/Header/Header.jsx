@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+
 const Header = () => {
     return (
         <div style={{
@@ -30,6 +33,9 @@ const Header = () => {
                 </li>
                 <li>
                     <Link to={"/userData/form"}>country form</Link>
+                </li>
+                <li>
+                    <Link to={"/login"}>Login<FontAwesomeIcon icon={faUser} className="nav-icon" /></Link>
                 </li>
             </ul>
         </div>

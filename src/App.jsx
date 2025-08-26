@@ -14,12 +14,24 @@ import Home3 from './pages/Home/Home-3'
 import FormValidation from './component/Task-2/Form-Validation'
 import Layout from './component/Layout/Layout'
 import ProductsList from './component/ProductList/ProductList'
+import Login from './pages/Login/Login'
+import Dashboard from './pages/Dashboard/Dashboard'
 
 export const routes = [
   {
     path: '/',
     element: <Home />,
     name: 'Home',
+  },
+  {
+    path: '/login',
+    element: <Login />,
+    name: 'Login',
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
+    name: 'Dashboard',
   },
   {
     path: '/products',
